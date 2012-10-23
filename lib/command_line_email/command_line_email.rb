@@ -68,26 +68,6 @@ def grab_text_from_filename_if_file_exists(filename_or_text)
   end
 end
 
-module Mail
-
-  class Message
-
-    def attach_selected(filenames, dir = '')
-      filenames.each do |filename|
-        add_file dir + filename
-      end
-    end
-
-    def attach_all_from_directory(directory)
-      Dir.glob(directory + '/*').each do |filepath|
-        add_file filepath
-      end
-    end
-
-  end
-
-end
-
 option_parser.parse!
 
 puts mail_attrs
