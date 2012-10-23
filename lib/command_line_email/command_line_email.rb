@@ -11,50 +11,42 @@ Mail.defaults do
   delivery_method :smtp, user_config.mail_options
 end
 
-def option_parser(user_config)
+mail_attrs = {to: []}
 
-  mail_attrs = {to: []}
+option_parser = OptionParser.new do |opts|
 
-  option_parser = OptionParser.new do |opts|
-
-    opts.on("-t TO","--to TO") do |to|
-      mail_attrs[:to] = to_string_to_mailing_list(user_config, to, mail_attrs[:to])
-    end
-
-    opts.on("-f FROM","--from FROM") do |from|
-      mail_attrs[:from] = from
-    end
-
-    opts.on("-b BODY","--body BODY") do |body|
-      mail_attrs[:body] = body
-    end
-
-    opts.on("-s SUBJECT","--subject SUBJECT") do |subject|
-      mail_attrs[:subject] = subject
-    end
-
-    opts.on("-c CC","--cc CC") do |cc|
-      if user_config.mailing_lists.has_key? cc.to_sym
-        mail_attrs[:cc] = user_config.mailing_lists[cc.to_sym]
-      else
-        mail_attrs[:cc] = cc
-      end
-    end
-
-    opts.on("-f FILE","--add-file FILE") do |file|
-      mail_attrs[:files] ||= []
-      mail_attrs[:files] << file
-    end
-
-    opts.on("-d DIRECTORY","--directory DIRECTORY") do |directory|
-      mail_attrs[:directory] = directory
-    end
-
+  opts.on("-t TO","--to TO") do |to|
+    mail_attrs[:to] = to_string_to_mailing_list(user_config, to, mail_attrs[:to])
   end
 
-  option_parser.parse!
+  opts.on("-f FROM","--from FROM") do |from|
+    mail_attrs[:from] = from
+  end
 
-  mail_attrs
+  opts.on("-b BODY","--body BODY") do |body|
+    mail_attrs[:body] = body
+  end
+
+  opts.on("-s SUBJECT","--subject SUBJECT") do |subject|
+    mail_attrs[:subject] = subject
+  end
+
+  opts.on("-c CC","--cc CC") do |cc|
+    if user_config.mailing_lists.has_key? cc.to_sym
+      mail_attrs[:cc] = user_config.mailing_lists[cc.to_sym]
+    else
+      mail_attrs[:cc] = cc
+    end
+  end
+
+  opts.on("-f FILE","--add-file FILE") do |file|
+    mail_attrs[:files] ||= []
+    mail_attrs[:files] << file
+  end
+
+  opts.on("-d DIRECTORY","--directory DIRECTORY") do |directory|
+    mail_attrs[:directory] = directory
+  end
 
 end
 
@@ -96,7 +88,9 @@ module Mail
 
 end
 
-mail_attrs = option_parser(user_config)
+option_parser.parse!
+
+puts mail_attrs
 
 mail = Mail.new do
   from    mail_attrs[:from]    || 'james@jameslavin.com'
