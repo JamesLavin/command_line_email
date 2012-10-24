@@ -7,7 +7,7 @@ module CommandLineEmail
     attr_reader :mail_options
 
     def initialize
-      @mail_options = set_mail_options
+      set_mail_options
     end
 
     def mail_config_file
@@ -16,6 +16,10 @@ module CommandLineEmail
 
     def mailing_lists
       mail_config[:mailing_lists]
+    end
+
+    def defaults
+      mail_config[:defaults]
     end
 
     private
