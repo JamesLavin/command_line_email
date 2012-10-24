@@ -2,6 +2,10 @@
 
 Send email from the Linux or Mac command line. Attach specific file(s) or all files in a directory. Specify email body as CLI string or load from a file.
 
+## WARNING - NOT YET FULLY IMPLEMENTED
+
+This program still needs some work before I finish gemifying it.
+
 ## Installation
 
 Install command_line_email as:
@@ -38,6 +42,12 @@ The first time you run command_line_email, it will create a YAML file at ~/.comm
       :me: 'me@domain.com'
       :parents: ['mom@domain.com','dad@domain.com']
       :friends: ['joe@anotherdomain.com','sally@yetanotherdomain.com]
+
+    :defaults:
+      :from: 'sender@myemailaddress.com'
+      :to:   'my.wife@heremailaddress.com'
+      :cc:   'me@myotheremailaddress.com'
+      :subject: 'From Johnny Smith'
 
 The following command line options are available:
 
