@@ -4,14 +4,11 @@ module CommandLineEmail
 
   class SendMailSetup
 
-    attr_reader :mail_options
+    attr_reader :mail_options, :mail_config_file
 
-    def initialize
+    def initialize(config_file = nil)
+      @mail_config_file = config_file || File.expand_path('~/.command_line_email.yml')
       set_mail_options
-    end
-
-    def mail_config_file
-      File.expand_path('~/.command_line_email.yml')
     end
 
     def mailing_lists
