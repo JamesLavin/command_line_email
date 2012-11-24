@@ -65,6 +65,8 @@ The following command line options are available:
 
     -s (--subject) takes a string as the email subject
 
+    -b (--body) takes a string as a text body. To provide more than one paragraph, provide a separate -b/--body for each paragraph in the order you wish the paragraphs to appear.
+
     -c (--cc) takes the same values as -t/--to and sets the email's "carbon copy" recipients
 
     -f (--file) takes a string representing the path to a file you wish to attach to the email. This flag can be used multiple times, each with a different file.

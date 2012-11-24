@@ -24,7 +24,8 @@ option_parser = OptionParser.new do |opts|
   end
 
   opts.on("-b BODY","--body BODY") do |body|
-    mail_attrs[:body] = body
+    mail_attrs[:body] ||= ""
+    mail_attrs[:body] << body + "\n"
   end
 
   opts.on("-s SUBJECT","--subject SUBJECT") do |subject|
