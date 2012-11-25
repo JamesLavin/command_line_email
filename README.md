@@ -2,10 +2,6 @@
 
 Send email from the Linux or Mac command line. Attach specific file(s) or all files in a directory. Specify email body as CLI string or load from a file.
 
-## WARNING - NOT YET FULLY IMPLEMENTED
-
-This program still needs some work before I finish gemifying it. I have not yet created the bin/ directory file and currently run this by calling lib/command_line_email.rb directly.
-
 ## Installation
 
 Install command_line_email as:
@@ -26,13 +22,13 @@ This gem is useful for anyone who wishes to send email from a server using only 
 
 ## Usage
 
-Once set up (see "Configuration File" below), you can send an email using various options (see "Command Line Options" below). Here's one example:
+Once set up (see "Configuration File" below), you can send an email using "clemail" plus various options (see "Command Line Options" below). Here's one example:
 
-    ruby lib/command_line_email.rb -t "me" -t "other_me" -s "Test subject line" -b "My body text"
+    clemail -t "me" -t "other_me" -s "Test subject line" -b "My body text"
 
 ### Configuration File
 
-The first time you run command_line_email, it will create a YAML file at ~/.command_line_email.yml. You edit this file to set your email configuration and, optionally, create mailing lists. A configuration file looks something like this:
+The first time you run command_line_email, it will create a YAML file at ~/.command_line_email.yml (NOT YET IMPLEMENTED). You edit this file to set your email configuration and, optionally, create mailing lists. A configuration file looks something like this:
 
     ---
     :connection:
