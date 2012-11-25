@@ -2,7 +2,7 @@
 
 module CommandLineEmail
 
-  class SendMailSetup
+  class SendEmailSetup
 
     class ConfigFileNotFound < StandardError
       def initialize(msg)

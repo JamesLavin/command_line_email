@@ -3,11 +3,11 @@
 require 'mail'
 require 'yaml'
 require 'optparse'
-require 'send_mail_setup'
+require 'send_email_setup'
 require 'cle_optparse'
 require 'deliver_email'
 
-user_config = CommandLineEmail::SendMailSetup.new
+user_config = CommandLineEmail::SendEmailSetup.new
 
 Mail.defaults do
   delivery_method :smtp, user_config.mail_options
