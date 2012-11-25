@@ -12,7 +12,7 @@ Mail.defaults do
   delivery_method :smtp, user_config.mail_options
 end
 
-mail_attrs = CleOptparse.parse(ARGV, user_config)
+mail_attrs = CommandLineEmail::CleOptparse.parse(ARGV, user_config)
 
 puts mail_attrs
 
