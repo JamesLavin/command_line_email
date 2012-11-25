@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.name          = "command_line_email"
   gem.version       = CommandLineEmail::VERSION
   gem.authors       = ["James Lavin"]
-  gem.email         = ["james@jameslavin.com"]
+  gem.email         = ["command_line_email@futureresearch.com"]
   gem.description   = %q{Send email from the Linux or Mac command line}
   gem.summary       = %q{Send email from the Linux or Mac command line. Can attach specific files or all files in a directory. Can load email body from a file.}
   gem.homepage      = "https://github.com/JamesLavin/command_line_email"
