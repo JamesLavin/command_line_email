@@ -24,7 +24,7 @@ This gem is useful for anyone who wishes to send email from a server using only 
 
 Once set up (see "Configuration File" below), you can send an email using "clemail" plus various options (see "Command Line Options" below). Here's one example:
 
-    clemail -t "me" -t "other_me" -s "Test subject line" -b "My body text"
+    clemail -t "me@myaddress.com" -t "my_friend@her_address.com" -s "Subject line text" -b "First body paragraph" -b "Second body paragraph"
 
 ### Configuration File
 
