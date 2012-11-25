@@ -5,6 +5,7 @@ require 'yaml'
 require 'optparse'
 require 'send_mail_setup'
 require 'cle_optparse'
+require 'deliver_email'
 
 user_config = CommandLineEmail::SendMailSetup.new
 
@@ -24,6 +25,9 @@ def grab_text_from_filename_if_file_exists(filename_or_text)
   end
 end
 
+CommandLineEmail::DeliverEmail.deliver(user_config, mail_attrs)
+
+=begin
 mail = Mail.new do
   from    mail_attrs[:from]    || user_config.defaults[:from]
   to      mail_attrs[:to]      || user_config.defaults[:to]
@@ -38,3 +42,4 @@ mail = Mail.new do
 end
 
 mail.deliver!
+=end
