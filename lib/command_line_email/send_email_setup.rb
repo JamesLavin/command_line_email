@@ -14,9 +14,8 @@ module CommandLineEmail
     attr_reader :mail_options, :mail_config_file
 
     def initialize(config_file = nil)
-      config_file ||= '~/.command_line_email.yml'
-      @mail_config_file = File.expand_path(config_file)
-      raise(ConfigFileNotFound, nil, []) unless config_file_exists?
+      set_mail_config_file(config_file)
+      ensure_config_file_exists
       set_mail_options
     end
 
@@ -29,6 +28,16 @@ module CommandLineEmail
     end
 
     private
+
+    def ensure_config_file_exists
+      # nil to use default msg; [] to avoid printing ugly backtrace
+      raise(ConfigFileNotFound, nil, []) unless config_file_exists? 
+    end
+
+    def set_mail_config_file(config_file)
+      config_file ||= '~/.command_line_email.yml'
+      @mail_config_file = File.expand_path(config_file)
+    end
 
     def config_file_exists?
       File.exists? mail_config_file
