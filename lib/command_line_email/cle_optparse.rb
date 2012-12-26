@@ -33,7 +33,7 @@ module CommandLineEmail
           end
         end
 
-        opts.on("-f FILE","--add-file FILE") do |file|
+        opts.on("-F FILE","--file FILE") do |file|
           mail_attrs[:files] ||= []
           mail_attrs[:files] << file
         end

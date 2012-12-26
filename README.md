@@ -65,7 +65,7 @@ The following command line options are available:
 
     -c (--cc) takes the same values as -t/--to and sets the email's "carbon copy" recipients
 
-    -f (--file) takes a string representing the path to a file you wish to attach to the email. This flag can be used multiple times, each with a different file.
+    -F (--file) takes a string representing the path to a file you wish to attach to the email. This flag can be used multiple times, each with a different file.
 
     -d (--directory) takes a string with a directory path. If provided with the -f/--file option, it is presumed that all files are in the directory specified by the -d/--directory option. If no -f/--file option is present, ALL files within the -d/--directory directory will be attached.
 
