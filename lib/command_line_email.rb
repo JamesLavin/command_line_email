@@ -4,6 +4,7 @@ $LOAD_PATH.unshift("#{File.expand_path(File.dirname(__FILE__))}/command_line_ema
 
 require "mail"
 require "mail/message"
+require "extruby/mail/message"
 require "command_line_email/version"
 require "command_line_email/send_mail_setup"
 require "command_line_email/command_line_email"
