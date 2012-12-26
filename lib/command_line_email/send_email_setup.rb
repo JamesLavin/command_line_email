@@ -2,7 +2,7 @@
 
 module CommandLineEmail
 
-  class SendMailSetup
+  class SendEmailSetup
 
     class ConfigFileNotFound < StandardError
       def initialize(msg)
@@ -14,7 +14,8 @@ module CommandLineEmail
     attr_reader :mail_options, :mail_config_file
 
     def initialize(config_file = nil)
-      @mail_config_file = config_file || File.expand_path('~/.command_line_email.yml')
+      set_mail_config_file(config_file)
+      ensure_config_file_exists
       set_mail_options
     end
 
@@ -28,14 +29,26 @@ module CommandLineEmail
 
     private
 
-    def mail_config
-      @mail_config ||= load_mail_config_file(mail_config_file)
+    def ensure_config_file_exists
+      # nil to use default msg; [] to avoid printing ugly backtrace
+      raise(ConfigFileNotFound, nil, []) unless config_file_exists? 
     end
 
-    def load_mail_config_file(mail_config_file)
+    def set_mail_config_file(config_file)
+      config_file ||= '~/.command_line_email.yml'
+      @mail_config_file = File.expand_path(config_file)
+    end
+
+    def config_file_exists?
+      File.exists? mail_config_file
+    end
+
+    def mail_config
+      @mail_config ||= load_mail_config(mail_config_file)
+    end
+
+    def load_mail_config(mail_config_file)
       YAML::load(File.open(mail_config_file))
-      rescue
-        raise ConfigFileNotFound, nil, [] # turn off ugly backtrace 
     end
 
     def set_mail_options
