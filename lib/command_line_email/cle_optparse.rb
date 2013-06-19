@@ -4,7 +4,7 @@ module CommandLineEmail
 
     def self.parse(args, user_config)
 
-      mail_attrs = {to: []}
+      mail_attrs = {:to => []}
 
       option_parser = OptionParser.new do |opts|
 
@@ -52,7 +52,7 @@ module CommandLineEmail
 
     def self.to_string_to_mailing_list(user_config, to, list=[])
       # takes optional list in case you want to add to an existing list
-      if user_config.mailing_lists.has_key? to.to_sym
+      if user_config.mailing_lists && user_config.mailing_lists.has_key?(to.to_sym)
         Array(user_config.mailing_lists[to.to_sym]).each { |address| list << address }
       else
         list << to
