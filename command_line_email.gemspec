@@ -13,6 +13,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = "https://github.com/JamesLavin/command_line_email"
 
   gem.files         = `git ls-files`.split($/)
+  gem.add_dependency = 'mail'
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'fakefs'
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
