@@ -3,13 +3,14 @@ module CommandLineEmail
   class DeliverEmail
 
     def self.deliver(user_config={}, mail_attrs={})
+      body_text = mail_attrs[:body] ? grab_text_from_filename_if_file_exists(mail_attrs[:body]) : ''
 
       mail = Mail.new do
         from    mail_attrs[:from]    || user_config.defaults[:from]
         to      mail_attrs[:to]      || user_config.defaults[:to]
         cc      mail_attrs[:cc]      || (user_config.defaults && user_config.defaults[:cc])  || nil
         subject mail_attrs[:subject] || (user.config.defaults && user_config.defaults[:subject]) || ''
-        body    mail_attrs[:body] ? grab_text_from_filename_if_file_exists(mail_attrs[:body]) : ''
+        body    body_text
         if mail_attrs[:files]
           attach_selected(mail_attrs[:files], mail_attrs[:directory] || '')
         elsif mail_attrs[:directory]
