@@ -1,7 +1,8 @@
 require "spec_helper"
+require "email_spec"
 require "deliver_email"
 
-describe "deliver_email" do
+describe DeliverEmail do
 
   include FakeFS::SpecHelpers
 
